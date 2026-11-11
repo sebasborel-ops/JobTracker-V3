@@ -1,135 +1,239 @@
-
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JobTracker V3</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobTracker V3.4</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-    <h1>JobTracker V3</h1>
-</header>
+    <header class="topbar">
 
-<section class="dashboard">
+        <div>
+            <h1>JobTracker V3.4</h1>
+            <div id="todayDate" class="today-date"></div>
+        </div>
 
-    <div class="stat">
-        <strong>Total</strong>
-        <span id="totalCount">0</span>
-    </div>
+        <div class="top-stats">
 
-    <div class="stat">
-        <strong>Envoyées</strong>
-        <span id="sentCount">0</span>
-    </div>
+            <div class="mini-stat">
+                <span>Total</span>
+                <strong id="totalCount">0</strong>
+            </div>
 
-    <div class="stat">
-        <strong>Entretiens</strong>
-        <span id="interviewCount">0</span>
-    </div>
+            <div class="mini-stat">
+                <span>Envoyées</span>
+                <strong id="sentCount">0</strong>
+            </div>
 
-    <div class="stat">
-        <strong>Offres</strong>
-        <span id="offerCount">0</span>
-    </div>
+            <div class="mini-stat">
+                <span>Entretiens</span>
+                <strong id="interviewCount">0</strong>
+            </div>
 
-</section>
+            <div class="mini-stat">
+                <span>Offres</span>
+                <strong id="offerCount">0</strong>
+            </div>
 
-<section class="form-section">
+        </div>
 
-<h2>Nouvelle candidature</h2>
+    </header>
 
-<div class="form-grid">
+    <main class="main-layout">
 
-<div class="field">
-<label>Employeur</label>
-<input id="employer" type="text">
-</div>
+        <!-- FORMULAIRE -->
 
-<div class="field">
-<label>Poste</label>
-<input id="position" type="text">
-</div>
+        <aside class="left-panel">
 
-<div class="field">
-<label>Grade</label>
-<input id="grade" type="text">
-</div>
+            <div class="panel">
 
-<div class="field">
-<label>Localisation</label>
-<input id="location" type="text">
-</div>
+                <h2>Nouvelle candidature</h2>
 
-<div class="field">
-<label>Source</label>
-<input id="source" type="text">
-</div>
+                <div class="form-grid">
 
-<div class="field">
-<label>Lien offre</label>
-<input id="jobLink" type="text">
-</div>
+                    <div class="field">
+                        <label>Employeur</label>
+                        <input id="employer" type="text">
+                    </div>
 
-<div class="field">
-<label>Date limite candidature</label>
-<input id="deadline" type="date">
-</div>
+                    <div class="field">
+                        <label>Poste</label>
+                        <input id="position" type="text">
+                    </div>
 
-<div class="field">
-<label>Date candidature</label>
-<input id="applicationDate" type="date">
-</div>
+                    <div class="field">
+                        <label>Grade</label>
+                        <input id="grade" type="text">
+                    </div>
 
-<div class="field">
-<label>Pré-entretien</label>
-<input id="preInterview" type="date">
-</div>
+                    <div class="field">
+                        <label>Localisation</label>
+                        <input id="location" type="text">
+                    </div>
 
-<div class="field">
-<label>Test écrit</label>
-<input id="writtenTest" type="date">
-</div>
+                    <div class="field">
+                        <label>Source</label>
+                        <input id="source" type="text">
+                    </div>
 
-<div class="field">
-<label>Entretien</label>
-<input id="interviewDate" type="date">
-</div>
+                    <div class="field">
+                        <label>Lien offre</label>
+                        <input id="jobLink" type="text">
+                    </div>
 
-<div class="field">
-<label>Résultat</label>
-<select id="result">
-<option>En attente</option>
-<option>Refus</option>
-<option>Liste d'attente</option>
-<option>Offre reçue</option>
-<option>Offre acceptée</option>
-<option>Candidature retirée</option>
-</select>
-</div>
+                </div>
 
-</div>
+                <h3>Dates</h3>
 
-<label>Notes</label>
-<textarea id="notes" rows="3"></textarea>
+                <div class="dates-section">
 
-<button class="add-btn" onclick="addCandidate()">
-+ Ajouter
-</button>
+                    <label>Date limite</label>
 
-</section>
+                    <div class="date-row">
 
-<section id="cardsContainer" class="cards-container"></section>
+                        <input id="deadlineDay" maxlength="2" placeholder="JJ">
 
-<div class="actions">
-<button onclick="exportData()">Export JSON</button>
-<input type="file" id="importFile" onchange="importData(event)">
-</div>
+                        <input id="deadlineMonth" maxlength="2" placeholder="MM">
 
-<script src="app.js"></script>
+                        <input id="deadlineYear" maxlength="4" placeholder="AAAA">
+
+                    </div>
+
+                    <label>Date candidature</label>
+
+                    <div class="date-row">
+
+                        <input id="applicationDay" maxlength="2" placeholder="JJ">
+
+                        <input id="applicationMonth" maxlength="2" placeholder="MM">
+
+                        <input id="applicationYear" maxlength="4" placeholder="AAAA">
+
+                    </div>
+
+                    <label>Pré-entretien</label>
+
+                    <div class="date-row">
+
+                        <input id="preDay" maxlength="2" placeholder="JJ">
+
+                        <input id="preMonth" maxlength="2" placeholder="MM">
+
+                        <input id="preYear" maxlength="4" placeholder="AAAA">
+
+                    </div>
+
+                    <label>Test écrit</label>
+
+                    <div class="date-row">
+
+                        <input id="testDay" maxlength="2" placeholder="JJ">
+
+                        <input id="testMonth" maxlength="2" placeholder="MM">
+
+                        <input id="testYear" maxlength="4" placeholder="AAAA">
+
+                    </div>
+
+                    <label>Entretien</label>
+
+                    <div class="date-row">
+
+                        <input id="interviewDay" maxlength="2" placeholder="JJ">
+
+                        <input id="interviewMonth" maxlength="2" placeholder="MM">
+
+                        <input id="interviewYear" maxlength="4" placeholder="AAAA">
+
+                    </div>
+
+                </div>
+
+                <div class="field">
+
+                    <label>Résultat</label>
+
+                    <select id="result">
+
+                        <option>En attente</option>
+                        <option>Refus</option>
+                        <option>Liste d'attente</option>
+                        <option>Offre reçue</option>
+                        <option>Offre acceptée</option>
+                        <option>Candidature retirée</option>
+
+                    </select>
+
+                </div>
+
+                <div class="field">
+
+                    <label>Notes</label>
+
+                    <textarea id="notes"></textarea>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button id="saveBtn"
+                        class="save-btn"
+                        onclick="addCandidate()">
+
+                        Ajouter
+
+                    </button>
+
+                </div>
+
+                <div class="actions">
+
+                    <button onclick="exportData()">
+                        Export JSON
+                    </button>
+
+                    <input
+                        type="file"
+                        id="importFile"
+                        onchange="importData(event)">
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- CARTES -->
+
+        <section class="right-panel">
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="🔍 Rechercher..."
+                    onkeyup="renderJobs()">
+
+            </div>
+
+            <section
+                id="cardsContainer"
+                class="cards-container">
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
 
 </body>
+
 </html>
